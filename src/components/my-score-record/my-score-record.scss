@@ -1,0 +1,51 @@
+@import "../../assets/common-ui/util.scss";
+
+.score-record{
+    .record-month{
+        &-header{
+            background: #f8f8f8;
+            height: 37px;
+            padding: 7px 15px;
+            @include m-1px-sd(bottom, #eee);
+            &_time{
+
+                font-size: 14px;
+                color: #555566;
+                line-height: 21px;
+            }
+            &_num{
+                font-size: 12px;
+                color: #aaaabb;
+                line-height: 18px;
+            }
+        }
+        &-list{
+            .record-month-item{
+                height: 45px;
+                padding: 16px 15px 17px;
+                @include m-1px-sd(bottom, #eee);
+                .month-item-info{
+                    &_title{
+                        font-size: 16px;
+                        color: #555566;
+                        line-height: 24px;
+                        margin-bottom: 3px;
+                    }
+                    &_time{
+                        font-size: 12px;
+                        color: #888899;
+                        line-height: 18px;
+                    }
+                }
+                &_num{
+                    display: inline-block;
+                    font-size: 16px;
+                    color: #555566;
+                    .num_bigger{
+                        font-size: 20px;
+                    }
+                }
+            }
+        }
+    }
+}

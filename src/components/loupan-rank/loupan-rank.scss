@@ -1,0 +1,47 @@
+@import "../../assets/common-ui/util.scss";
+
+.loupan-rank{
+    background: #fff;
+    .rank-list{
+        .rank-item{
+            height: 50px;
+            padding: 0 15px;
+            @include m-1px-sd(bottom, #eee);
+            &_name{
+                height: 50px;
+                line-height: 50px;
+                font-size: 14px;
+                color: #888899;
+            }
+            &_num{
+                display: inline-block;
+                height: 50px;
+                line-height: 50px;
+                font-size: 14px;
+                color: #555566;
+                margin-right: 20px;
+            }
+            &_type{
+                display: inline-block;
+                width: 14px;
+                height: 14px;
+                position: absolute;
+                top: 50%;
+                right: 15px;
+                transform: translate(0, -50%);
+                &.icon-rank-up{
+                    @include bg('icon-rank-up.png');
+                }
+
+            }
+        }
+    }
+    .loupan-rank_help{
+        font-size: 12px;
+        color: #aaaabb;
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+        @include m-1px-sd(bottom, #eee);
+    }
+}

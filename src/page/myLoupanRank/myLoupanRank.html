@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="keywords" content="搜狐焦点" />
+        <meta name="description" content="搜狐焦点" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1, user-scalable=no">
+
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <meta content="telephone=no" name="format-detection"/>
+        <meta name="apple-mobile-web-app-title" content="个人中心">
+
+        <link rel="apple-touch-icon" sizes="57x57" href="//src.focus.cn/static_files/wap/mobile/recreate/old/images/focus57_75493c93e438a29f0c5f4eba1f12938c.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="//src.focus.cn/static_files/wap/mobile/recreate/old/images/focus72_a1be4dd145165d5c837fc83f7b1e1eb6.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="//src.focus.cn/static_files/wap/mobile/recreate/old/images/focus114_10cb41af990a985ebdb1a7929a5b1e68.png">
+        <link rel="apple-touch-icon" sizes="144x144" href="//src.focus.cn/static_files/wap/mobile/recreate/old/images/focus144_711d6a736034fb8e4bdfadd0e0db1e1d.png">
+        <link rel="apple-touch-icon" sizes="152x152" href="//src.focus.cn/static_files/wap/mobile/recreate/old/images/focus152_33e8a02e7fbc4f6431e63cb02e1cfa30.png">
+
+        <title>我的楼盘排名</title>
+    </head>
+    <body>
+        <div id="app">
+            <router-view></router-view>
+        </div>
+        <!-- built files will be auto injected -->
+    </body>
+    <script type="text/javascript">
+        (function (doc, win) {
+            var docEl = doc.documentElement,
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' :
+                'resize',
+                recalc = function () {
+                    var clientWidth = docEl.clientWidth;
+                    if (!clientWidth) return;
+                    // 大于640,就应该去访问pc站了
+                    if (clientWidth > 640) clientWidth = 640;
+                    // 页面中换算比例 : rem = px/75, 设计稿按750来
+                    docEl.style.fontSize = 100 * (clientWidth / 375) + 'px';
+                };
+            recalc();
+            if (!doc.addEventListener) return;
+            win.addEventListener(resizeEvt, recalc, false);
+            doc.addEventListener('DOMContentLoaded', recalc, false);
+
+        })(window.document, window)
+
+    </script>
+</html>
