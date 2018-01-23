@@ -33,6 +33,8 @@ module.exports = {
       'config': resolve('src/config.js'),
       'lib': resolve('src/assets/lib'),
       'util': resolve('src/assets/lib/util.js'),
+      'server': resolve('src/server'),
+
       'img': resolve('src/assets/img'),
       'commonUi': resolve('/src/assets/common-ui')
 

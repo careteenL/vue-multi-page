@@ -100,7 +100,7 @@ mp（开放平台）在移动端下的独立新页面（活动页、嵌入APP聚
 - 其次在 components 中 新建 当前页 可复用的组件
 - 在 根目录 build  -> webpack.dev.conf.js 中的 historyApiFallback 新增 一条页面访问别名规则
 - 在 根目录 config -> index.js 中 修改 host 和 port ，npm run dev 后 输入对应url即可访问
-- ** todo: 脚本生成新页面、 build和config目录中抽取变量部分、mock数据 **
+- **todo: 脚本生成新页面、 build和config目录中抽取变量部分、mock数据**
 
 ### 5.2 特定开发情景
 

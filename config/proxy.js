@@ -1,7 +1,7 @@
 var path = require('path')
 
 var map = {
-    "/api/v1": "http://u.focus-test.cn/api/v1"
+    "/nameAndGroupList": "http://m.jingjiren.focus-test.cn/nameAndGroupList"
 
 };
 

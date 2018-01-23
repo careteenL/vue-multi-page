@@ -54,7 +54,8 @@ module.exports = {
     PHOTO_STYLE_A: "sh210x150sh",
     /* 文章 */
     PHOTO_STYLE_H: "sh50x50sh",
-    /* 头像 */
+
+    brokerDomain: byProxy ? "" : "//jingjiren" + mainDomain
 
 
 }

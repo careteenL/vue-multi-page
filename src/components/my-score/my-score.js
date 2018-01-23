@@ -1,6 +1,8 @@
 import CommonHeader from 'components/common-header/common-header.vue'
 import CommonLoading from 'components/common-loading/common-loading.vue'
 
+import $$myScoreModel from 'server/myScore.js'
+
 export default {
     name: 'my-score',
     data () {
@@ -51,6 +53,11 @@ export default {
     },
     methods: {
         getData () {
+            var parmas = {};
+            $$myScoreModel.getMyScoreRecord(parmas, (res) => {
+                console.log(res);
+            });
+
             setTimeout(() => {
                 this.scoreObj = JSON.parse(JSON.stringify(this.scoreObj2));
                 this.loading = false;
