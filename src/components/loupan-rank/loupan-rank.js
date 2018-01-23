@@ -5,7 +5,6 @@ export default {
     data () {
         return {
 
-
         }
     },
     components: {
@@ -26,9 +25,12 @@ export default {
         },
 
         tipHandle () {
-            this.$router.push({
-                name: 'help',
+            this.$toast({
+                tip: '连接服务器出错！请刷新重新连接！'
             })
+            // this.$router.push({
+            //     name: 'help',
+            // })
         }
     }
 }

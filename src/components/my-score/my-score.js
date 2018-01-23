@@ -1,10 +1,13 @@
 import CommonHeader from 'components/common-header/common-header.vue'
+import CommonLoading from 'components/common-loading/common-loading.vue'
 
 export default {
     name: 'my-score',
     data () {
         return {
-            scoreObj: {
+            loading: true,
+            scoreObj: {},
+            scoreObj2: {
                 '积分使用': [
                     {
                         img: 'jingzhunqianke',
@@ -38,7 +41,8 @@ export default {
         }
     },
     components: {
-        'common-header': CommonHeader
+        'common-header': CommonHeader,
+        'common-loading': CommonLoading
     },
     beforeMount () {
         document.body.style.backgroundColor = '#f8f8f8';
@@ -47,7 +51,10 @@ export default {
     },
     methods: {
         getData () {
-
+            setTimeout(() => {
+                this.scoreObj = JSON.parse(JSON.stringify(this.scoreObj2));
+                this.loading = false;
+            }, 1000)
         },
         goBack () {
             console.log(1111);

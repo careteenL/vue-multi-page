@@ -12,11 +12,11 @@ Vue.prototype.$datePicker = DatePicker;
 
 require('commonUi/normalize.scss')
 
-// new Vue({
-//     el: '#app',
-//     router
-// })
-
 new Vue({
+    el: '#app',
     router
-}).$mount('#app')
+})
+
+// new Vue({
+//     router
+// }).$mount('#app')

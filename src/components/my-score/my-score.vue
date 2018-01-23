@@ -26,7 +26,7 @@
 
                 <p class="score-info_tip">如违规刷积分，我们有权扣除您的积分并取消您的积分获取资格。本活动最终解释权归搜狐焦点所有</p>
             </div>
-
+            <common-loading v-if="loading"></common-loading>
         </div>
     </div>
 </template>

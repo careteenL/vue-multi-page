@@ -9,17 +9,16 @@
                 <dd class="help-item_info">
                     平台会根据经纪人在该楼盘下的活跃度以及服务能力进行经纪人排名展示，拥有更高活跃度以及更好的服务能力的经纪人将优先展示在楼盘页面。
                 </dd>
-                <dd class="help-item_more" @click="toggleMore">查看展示 ></dd>
+                <dd class="help-item_more" @click="toggleMore(true)">查看展示 ></dd>
             </dl>
             <dl class="help-item" v-for="(hlit, hlidx) of helpList">
                 <dt class="help-item_lable">
                     {{hlit.lable}}
                 </dt>
-                <dd class="help-item_info" v-html="hlit.info">
-                </dd>
+                <dd class="help-item_info" v-html="hlit.info"></dd>
             </dl>
             <div class="more-swiper" v-if="showSwiper">
-                <i class="more-swiper_close" @click="toggleMore"></i>
+                <i class="more-swiper_close" @click="toggleMore(false)"></i>
                 <swiper :options="swiperOption" ref="mySwiper" class="more-swiper_wrap">
                     <!-- slides -->
                     <swiper-slide>

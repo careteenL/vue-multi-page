@@ -1,7 +1,9 @@
 import CommonHeader from 'components/common-header/common-header.vue'
-// import Swiper from 'lib/swiper/swiper-3.4.2.min.js'
 import {swiper, swiperSlide} from 'vue-awesome-swiper'
+import $$util from 'util'
+
 require('swiper/dist/css/swiper.css')
+
 export default {
     name: 'loupan-rank-help',
     data () {
@@ -36,24 +38,24 @@ export default {
                 // 假如你需要刚加载遍使用获取swiper对象来做什么事，那么这个属性一定要是true
                 notNextTick: true,
                 // swiper configs 所有的配置同swiper官方api配置
-                autoplay: 3000,
+                // autoplay: 3000,
                 // direction : 'vertical',
-                effect:"coverflow",
+                effect: "flip",
                 grabCursor : true,
                 loop: true,
-                setWrapperSize :true,
+                setWrapperSize: true,
                 // autoHeight: true,
                 // paginationType:"bullets",
-                pagination : '.swiper-pagination',
-                paginationClickable :true,
+                pagination: {
+                    el: '.swiper-pagination',
+                    type: 'fraction'
+                },
+                // paginationClickable: true,
                 // prevButton:'.swiper-button-prev',
                 // nextButton:'.swiper-button-next',
                 // scrollbar:'.swiper-scrollbar',
                 //mousewheelControl : true,
-                observeParents:true,
-                onTouchEnd: function(swiper) {
-                    console.log(swiper.activeIndex);
-                }
+                observeParents:true
             }
 
         }
@@ -68,8 +70,10 @@ export default {
         document.querySelector('#app').style.backgroundColor = '#fff';
     },
     methods: {
-        toggleMore () {
+        toggleMore (flag) {
             this.showSwiper = !this.showSwiper;
+            flag ? $$util.lockScreen() : $$util.unLockScreen();
+
         }
     }
 }
