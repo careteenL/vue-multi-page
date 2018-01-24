@@ -1,9 +1,13 @@
 var path = require('path')
 
-var map = {
-    "/nameAndGroupList": "http://m.jingjiren.focus-test.cn/nameAndGroupList"
+var mutilPageConf = require('./mutil-page-config.js')
 
-};
+// var map = {
+//     "/nameAndGroupList": "http://m.jingjiren.focus-test.cn/nameAndGroupList"
+//
+// };
+
+var map = mutilPageConf.proxyTable;
 
 var proxyTable = {};
 for (var url in map) {
@@ -16,7 +20,8 @@ for (var url in map) {
             },
             cookieDomainRewrite: {
                 // "*": "127.0.0.1"
-                "*": "10.0.121.169"
+                // "*": "10.0.121.169"
+                "*": mutilPageConf.url
             }
         }
     }

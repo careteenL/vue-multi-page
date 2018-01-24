@@ -4,6 +4,8 @@
 
 const path = require('path')
 
+const mutilPageConf = require('./mutil-page-config.js')
+
 module.exports = {
   dev: {
 
@@ -14,9 +16,10 @@ module.exports = {
 
     // Various Dev Server settings
     // host: '127.0.0.1', // can be overwritten by process.env.HOST
-    host: '10.0.121.169',
-    // host: '192.168.1.107',
-    port: 2333, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
+    // host: '10.0.121.169',
+    host: mutilPageConf.url,
+    // port: 2333, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
+    port: mutilPageConf.port,
     autoOpenBrowser: false,
     errorOverlay: true,
     notifyOnErrors: true,
@@ -45,7 +48,7 @@ module.exports = {
     // Paths
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
-    assetsPublicPath: '/',
+    assetsPublicPath: '//${res_domain}/wap-broker/wap-activity/',
 
     /**
      * Source Maps

@@ -139,7 +139,7 @@ exports.htmlPlugin = function() {
             // 模板来源
             template: filePath,
             // 文件名称
-            filename: filename + '.html',
+            filename: 'vm/' + filename + '.html',
             // 页面模板需要加对应的js脚本，如果不加这行则每个页面都会引入所有的js脚本
             chunks: ['manifest', 'vendor', filename],
             inject: true

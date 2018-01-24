@@ -13,6 +13,21 @@ const portfinder = require('portfinder')
 const HOST = process.env.HOST
 const PORT = process.env.PORT && Number(process.env.PORT)
 
+const mutilPageConf = require('../config/mutil-page-config.js')
+// const setup = require('../config/setup')
+
+// dev-server 下 前端路由
+let pageUrlRules = [];
+for (let page in mutilPageConf.pageMap) {
+    if (mutilPageConf.pageMap.hasOwnProperty(page)) {
+        let pageItem = mutilPageConf.pageMap[page];
+        pageUrlRules.push({
+            from: new RegExp(pageItem.aliasPage),
+            to: path.posix.join(config.dev.assetsPublicPath, 'vm/' + pageItem.realPage)
+        })
+    }
+}
+
 const devWebpackConfig = merge(baseWebpackConfig, {
   module: {
     rules: utils.styleLoaders({ sourceMap: config.dev.cssSourceMap, usePostCSS: true })
@@ -24,12 +39,16 @@ const devWebpackConfig = merge(baseWebpackConfig, {
   devServer: {
     clientLogLevel: 'warning',
     historyApiFallback: {
-      rewrites: [
-        { from: /myScore/, to: path.posix.join(config.dev.assetsPublicPath, 'myScore.html') },
-        { from: /myLoupanRank/, to: path.posix.join(config.dev.assetsPublicPath, 'myLoupanRank.html') },
-
-      ],
+      // rewrites: [
+      //   { from: /myScore/, to: path.posix.join(config.dev.assetsPublicPath, 'myScore.html') },
+      //   { from: /myLoupanRank/, to: path.posix.join(config.dev.assetsPublicPath, 'myLoupanRank.html') },
+      //
+      // ],
+      rewrites: [...pageUrlRules]
     },
+    // before: function(app){
+    //     setup(app)
+    // },
     hot: true,
     contentBase: false, // since we use CopyWebpackPlugin.
     compress: true,
