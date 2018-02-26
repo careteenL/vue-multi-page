@@ -1,7 +1,7 @@
 // var $$util = require('lib/util.js');
 import $$util from 'util'
 export default {
-    name: 'dialog',
+    name: 'common-dialog',
     data: function() {
         return {
             closed: true,

@@ -1,6 +1,6 @@
 require('lib/iscroll');
 
-import $$util from 'lib/util.js'
+import $$util from 'util'
 
 export default {
     name: 'picker',
@@ -13,6 +13,7 @@ export default {
             result: [],
             scrolls: [],
             selects: [],
+            showHackMask: false,  // hack
             showMiddleBtn: false, // 中间按钮 是否展示
             middleTxt: '保密',  // 中间按钮 文本
             needDistrict: false,
@@ -201,6 +202,20 @@ export default {
             if(window.history && window.history.pushState) {
                 window.removeEventListener('popstate', this.destroyInstance, false);
             }
+        },
+        /**
+         *
+         * @desc 防止两个手指进行操作 年后优化
+         */
+        touchendHander (e) {
+            // alert(e.touches.length)
+            if (e.touches.length > 1) {
+                this.showHackMask = true;
+                setTimeout(() => {
+                    this.showHackMask = false;
+                }, 100);
+                e.preventDefault();
+            }
         }
     },
 
@@ -209,6 +224,11 @@ export default {
             this.init();
         })
         this.onPopStateFn();
+
+        // window.addEventListener('click', this.touchendHander, false);
+        // window.addEventListener('touchstart', this.touchendHander, false);
+        // window.addEventListener('touchmove', this.touchendHander, false);
+        // window.addEventListener('touchend', this.touchendHander, false);
     },
     destroyed() {
         this.offPopStateFn();

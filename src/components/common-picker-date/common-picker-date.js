@@ -14,21 +14,37 @@ this.$datePicker({
 */
 
 import picker from '../common-picker/index.js';
-
+var needDay = false;
 var datePicker = function (options) {
     var dateOptions = {
-        beginyear: 1970, //日期--年--份开始
-        endyear: 2017, //日期--年--份结束
+        beginyear: 2017, //日期--年--份开始
+        endyear: new Date().getFullYear(), //日期--年--份结束
     }
-
+    needDay = options.needDay;
     return picker(Object.assign({
-        getData: cbGetData(dateOptions)
+        getData: cbGetData(dateOptions, needDay)
     }, options));
 };
 export default datePicker;
 
-function cbGetData(dateOptions) {
-    return [
+const _util = {
+    isRealArr(arr) {
+        if (arr && arr.length) {
+
+            for (let i = 0; i < arr.length; i++) {
+                if (!!arr[i] && arr[i] !== '') {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        return false;
+    }
+}
+function cbGetData(dateOptions, needDay) {
+    let returnArr = [
         (id, name) => { // 异步数据用promise
 
             let tmp = [];
@@ -42,7 +58,12 @@ function cbGetData(dateOptions) {
         }, (id, name) => {
 
             let tmp = [];
-            for (var i = 1; i <= 12; i++) {
+            let curMonth = 12;
+            // 当前年份只能展示到当前月份
+            if (id === new Date().getFullYear()) {
+                curMonth = new Date().getMonth() + 1;
+            }
+            for (var i = 1; i <= curMonth; i++) {
                 tmp.push({
                     id: i,
                     name: i + '月'
@@ -63,6 +84,12 @@ function cbGetData(dateOptions) {
             return tmp
         }
     ]
+
+    if (needDay) {
+        return returnArr;
+    } else {
+        return returnArr.slice(0, 2);
+    }
 }
 
 function checkdays(year, month) {

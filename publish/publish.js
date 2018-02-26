@@ -6,7 +6,6 @@ if (!branch) {
     return
 }
 
-
 var path = require('path');
 var fs = require('fs');
 var root = path.resolve(__dirname);
@@ -26,6 +25,11 @@ exec(`git clone -b ${branch} git@code.ops.focus.cn:system/wap-broker.git`);
 var staticFe = './dist/static';  // 静态资源
 var vmFe = './dist/vm/';  // 模板文件
 
+/**
+ *
+ * @desc 新增页面时新增一项，目的：将页面文件后缀改为vm，后端才能找到对应页面渲染。
+ *       注：新增页面时需告知后端同学 页面name
+ */
 var pageMap = {
     'myScore.html': 'myScore.vm',
     'myLoupanRank.html': 'myLoupanRank.vm'
@@ -54,6 +58,7 @@ find(staticBe).filter(function(file) {
 });
 
 /** copy to backend end**/
+
 /** push to backend **/
 exec(`cd wap-broker && git add *`);
 exec(`cd wap-broker && git pull origin ${branch}`);

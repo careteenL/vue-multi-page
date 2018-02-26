@@ -1,7 +1,14 @@
 @import "../../assets/common-ui/util.scss";
 
+.common-header-cur{
+    position: fixed!important;
+    top: 0;
+    left: 0;
+    z-index: 100;
+}
 .loupan-rank{
     background: #fff;
+    margin-top: 44px;
     .rank-list{
         .rank-item{
             height: 50px;
@@ -12,6 +19,7 @@
                 line-height: 50px;
                 font-size: 14px;
                 color: #888899;
+                @extend %ellipsis;
             }
             &_num{
                 display: inline-block;
@@ -20,6 +28,12 @@
                 font-size: 14px;
                 color: #555566;
                 margin-right: 20px;
+                max-width: 100px;
+                @extend %ellipsis;
+                &.no-type{
+                    margin-right: 0;
+                    margin-left: 10px;
+                }
             }
             &_type{
                 display: inline-block;

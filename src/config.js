@@ -54,8 +54,12 @@ module.exports = {
     PHOTO_STYLE_A: "sh210x150sh",
     /* 文章 */
     PHOTO_STYLE_H: "sh50x50sh",
+    // 登录登出页规则
+    loginUrl: byProxy ? "/login" : loginUrl,
+    logoutUrl: byProxy ? "/login/logout" : loginUrl + "/logout",
 
-    brokerDomain: byProxy ? "" : "//jingjiren" + mainDomain
+    brokerDomain: byProxy ? "" : "//broker" + mainDomain,
+    brokerAppDomain: byProxy ? "" : "//broker-app" + mainDomain
 
 
 }

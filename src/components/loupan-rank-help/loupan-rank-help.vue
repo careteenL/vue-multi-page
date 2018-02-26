@@ -1,6 +1,10 @@
 <template>
     <div>
-        <common-header title="了解楼盘排名" link="/index"></common-header>
+        <common-header title="了解楼盘排名"
+            class="common-header-cur"
+            :action="true"
+            @goBack="goBack">
+        </common-header>
         <div class="score-help">
             <dl class="help-item">
                 <dt class="help-item_lable">

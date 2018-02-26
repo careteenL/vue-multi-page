@@ -1,7 +1,18 @@
 @import "../../assets/common-ui/util.scss";
 
+.common-header-cur{
+    // background: #f3f3f8!important;
+    position: fixed!important;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    &::before{
+        // height: 0!important;
+    }
+}
 .my-score{
-    background: #f8f8f8;
+    background: #f8f8fb;
+    margin-top: 44px;
     .score-balance{
         height: 107px;
         padding: 0 15px;
@@ -14,7 +25,6 @@
             color: #888899;
             height: 18px;
             line-height: 18px;
-
         }
         &-detail{
             height: 40px;
@@ -37,7 +47,7 @@
                 height: 40px;
                 width: 100px;
                 text-align: center;
-                font-size: 18px;
+                font-size: 16px;
                 line-height: 40px;
                 color: #555566;
                 border-radius: 50px;
@@ -101,10 +111,15 @@
                     .info-item-desc{
                         &_top{
                             font-size: 16px;
+                            height: 18px;
+                            line-height: 18px;
                             color: #555566;
+                            margin-bottom: 8px;
                         }
                         &_bottom{
                             font-size: 12px;
+                            height: 14px;
+                            line-height: 14px;
                             color: #aaaabb;
                         }
                     }
@@ -124,6 +139,7 @@
                 }
             }
         }
+
         &_tip{
             padding: 7px 15px 10px;
             font-size: 11px;

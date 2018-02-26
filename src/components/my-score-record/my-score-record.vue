@@ -1,33 +1,42 @@
 <template>
     <div>
-        <common-header title="积分记录" link="/index" tipAction="icon-date" @tipHandle="tipHandle"></common-header>
-        <div class="score-record">
-            <div class="record-month">
-                <div class="record-month-header">
+        <common-header title="积分记录"
+            class="common-header-cur"
+            link="/index"
+            tipAction="icon-date"
+            @tipHandle="tipHandle">
+        </common-header>
+        <div class="score-record" v-if="!isEmpty">
+            <!-- <div :class="['record-date_icon']" @touchstart="tipHandle"></div> -->
+            <div class="record-month" v-for="(val, key, index) in monthCount">
+                <div :class="['record-month-header']">
                     <p class="record-month-header_time">
-                        2018年1月
+                        {{key | formatDate}}
                     </p>
                     <p class="record-month-header_num">
-                        获取积分 125  使用积分 500
+                        获取积分 {{val.get}}  使用积分 {{val.cost | absScore}}
                     </p>
                 </div>
                 <ul class="record-month-list">
-                    <li class="record-month-item flex">
+                    <li class="record-month-item flex" v-for="(vit, vidx) of val.list">
                         <div class="month-item-info cell">
                             <p class="month-item-info_title">
-                                发布低质量直播扣除
+                                {{vit.sourceDesc}}
                             </p>
                             <p class="month-item-info_time">
-                                2017-12-24 12:00
+                                {{vit.createTimeStr}}
                             </p>
                         </div>
                         <span class="record-month-item_num">
-                            - <span class="num_bigger">100</span> 分
+                            <span class="num_bigger">{{vit.score | itemScore}}</span> 分
                         </span>
                     </li>
                 </ul>
             </div>
+            <common-load-more :callback="loadmore.bind(this)" v-if="!unLoadMore || hasNextPage"></common-load-more>
         </div>
+        <common-empty v-else tip="暂无积分记录"></common-empty>
+        <common-loading v-if="loading"></common-loading>
     </div>
 </template>
 

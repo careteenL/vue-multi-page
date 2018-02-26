@@ -176,21 +176,21 @@ var Tools = {
         return !Object.keys(obj).length
     },
 
-    /**
-     *
-     * @desc 弹窗、蒙层...时禁止下层屏幕 滚动
-     */
-    lockScreen: function() {
-        document.querySelector('body').setAttribute('style', 'position: fixed;');
-    },
-
-    /**
-     *
-     * @desc 弹窗、蒙层...时取消 禁止下层屏幕 滚动
-     */
-    unLockScreen: function() {
-        document.querySelector('body').setAttribute('style', 'position: relative;');
-    },
+    // /**
+    //  *
+    //  * @desc 弹窗、蒙层...时禁止下层屏幕 滚动
+    //  */
+    // lockScreen: function() {
+    //     document.querySelector('body').setAttribute('style', 'position: fixed;');
+    // },
+    //
+    // /**
+    //  *
+    //  * @desc 弹窗、蒙层...时取消 禁止下层屏幕 滚动
+    //  */
+    // unLockScreen: function() {
+    //     document.querySelector('body').setAttribute('style', 'position: relative;');
+    // },
 
     /**
      *
@@ -252,6 +252,17 @@ var Tools = {
         if (sys.opera) return ('Opera: ' + sys.opera)
         if (sys.safari) return ('Safari: ' + sys.safari)
         return 'Unkonwn'
+    },
+
+    /**
+     *
+     * @desc 判断是否 是FocusApp环境下
+     *       wiki地址：http://wiki.ops.focus.cn/pages/viewpage.action?pageId=9509294
+     * @return {Boolean}
+     */
+    isFocusApp: function () {
+        var userAgent = 'navigator' in window && 'userAgent' in navigator && navigator.userAgent.toLowerCase() || '';
+        return /focusapp_/i.test(userAgent);
     },
 
     /**
@@ -480,6 +491,49 @@ var Tools = {
 	unLockScreen: function() {
 		document.querySelector('body').setAttribute('style', 'position: relative;');
 		window.scroll(0, Tools.ORIGIN_SCROLL_TOP);
+	},
+
+    /**
+     *
+     * @desc 日期格式化
+     */
+    dateFormat: function (val, format, type, isHtml) { // type：上午下午？ html: 比如显示过个空格
+		var t = new Date(val);
+		var date = {
+			"M+": t.getMonth() + 1,
+			"d+": t.getDate(),
+			"h+": t.getHours(),
+			"m+": t.getMinutes(),
+			"s+": t.getSeconds(),
+			"q+": Math.floor((t.getMonth() + 3) / 3),
+			"S+": t.getMilliseconds()
+		};
+		if (/(y+)/i.test(format)) {
+			format = format.replace(RegExp.$1, (t.getFullYear() + '').substr(4 - RegExp.$1.length));
+		}
+
+		for (var k in date) {
+
+			if (type && k === 'h+') {
+				var ohour = date[k];
+				var desc = (+ohour >= 12) ? "下午 " : "上午 ";
+				var nhour = (ohour > 12) ? ohour - 12 : ohour;
+
+				if (new RegExp("(" + k + ")").test(format)) {
+					format = format.replace(RegExp.$1, RegExp.$1.length == 1 ? desc + nhour : desc + ("00" +
+						nhour).substr(("" + date[k]).length));
+				}
+
+			} else if (new RegExp("(" + k + ")").test(format)) {
+				format = format.replace(RegExp.$1, RegExp.$1.length == 1 ? date[k] : ("00" + date[k]).substr(
+					("" + date[k]).length));
+			}
+		}
+		if (isHtml && /(\s+)/i.test(format)) {
+			var empty = new Array(RegExp.$1.length + 1);
+			format = format.replace(RegExp.$1, empty.join('&nbsp;'));
+		}
+		return format;
 	}
 
 };

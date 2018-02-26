@@ -1,18 +1,27 @@
 @import "../../assets/common-ui/util.scss";
+
+.common-header-cur{
+    position: fixed!important;
+    top: 0;
+    left: 0;
+    z-index: 100;
+}
 .score-help{
+    margin-top: 44px;
     .help-item{
         position: relative;
         @include m-1px-sd(bottom, #e0e0ea);
-        padding-bottom: 15px;
+        padding-bottom: 17px;
         &_lable{
-            height: 48px;
-            line-height: 48px;
+            margin-top: 8px;
+            height: 40px;
+            line-height: 40px;
             font-size: 16px;
             color: #555566;
             font-size: 600;
             position: relative;
             text-indent: 15px;
-
+            font-weight: 700;
             &:after{
                 content: '';
                 height: 16px;

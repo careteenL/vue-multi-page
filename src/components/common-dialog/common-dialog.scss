@@ -1,3 +1,5 @@
+@import "../../assets/common-ui/util.scss";
+
 %flex-center {
     display: -webkit-box;
     display: -webkit-flex;
@@ -19,7 +21,8 @@
     left: 0;
     top: 0;
     min-height: 2rem;
-    background: rgba(33, 33, 33, 0.5);
+    // background: rgba(33, 33, 33, 0.5);
+    background-color: rgba(85, 85, 102, 0.5);
     height: 100%;
     width: 100%;
     @extend %flex-center;
@@ -35,7 +38,7 @@
         border-radius: 0.1rem;
         -webkit-overflow-scrolling : touch;  //可以让页面在Native端滚动时模拟原生的弹性滚动效果
         .hd {
-            font-size: 0.17rem;
+            font-size: 0.16rem;
             text-align: center;
             padding-top: 0.15rem;
             font-weight: bold;
@@ -45,13 +48,14 @@
             width: auto;
             overflow: auto;
             -webkit-overflow-scrolling: touch;
-            padding: 0.18rem 0.15rem;
-            font-size: 0.16rem;
+            padding: 0.22rem 0.15rem;
+            font-size: 0.14rem;
             max-height: 2.5rem;
             overflow: auto;
-            line-height: 0.22rem;
-            color: #333;
+            line-height: 0.21rem;
+            color: #556;
             @extend %flex-center;
+            @include m-1px-sd(bottom, #eee);
             text-align: center;
         }
         .bd .text-left {
@@ -62,8 +66,8 @@
             display: -webkit-flex;
             display: flex;
             text-align: center;
-            height: 0.44rem;
-            line-height: 0.44rem;
+            height: 0.5rem;
+            line-height: 0.5rem;
         }
         .ft span {
             display: block;
@@ -72,18 +76,18 @@
             flex: 1;
             width: 100%;
             height: auto;
-            border-width: 1px 1px 0 0;
-            border-style: solid;
-            border-color: #eee;
+            @include m-1px-sd(right, #eee);
             background-color: #fff;
-            color: #e43;
-            font-size: 0.16rem;
+            color: #d32;
+            font-size: 0.14rem;
         }
         .ft span:active {
             background-color: #f1f1f1;
         }
         .ft span:last-child {
-            border-right-width: 0;
+            &::before{
+                width: 0;
+            }
         }
     }
 }

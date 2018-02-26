@@ -1,20 +1,32 @@
 <template>
     <div>
-        <common-header title="我的楼盘排名" tipAction="icon-help" @tipHandle="tipHandle"></common-header>
-        <div class="loupan-rank">
+        <common-header title="我的楼盘排名"
+            class="common-header-cur"
+            tipAction="icon-help"
+            :action="true"
+            @goBack="goBack"
+            @tipHandle="tipHandle">
+        </common-header>
+        <div class="loupan-rank" v-if="!isEmpty">
             <ul class="rank-list">
-                <li class="rank-item flex">
+                <li class="rank-item flex" v-for="(rlit, rlidx) of rankList">
                     <span class="rank-item_name cell">
-                        北京时代广场
+                        {{rlit.projectName}}
                     </span>
-                    <span class="rank-item_num">
-                        当前排名：1
+                    <span class="rank-item_num no-type">
+                        当前排名：{{rlit.curRank}}
                     </span>
-                    <i class="rank-item_type icon-rank-up"></i>
+                    <!-- <i class="rank-item_type icon-rank-up"></i> -->
                 </li>
             </ul>
             <p class="loupan-rank_help" @click="tipHandle">如何快速提高排名 ></p>
         </div>
+        <common-empty v-else
+            tip="暂无楼盘排名"
+            moreAction="如何快速提高排名 >"
+            @emptyMoreFn="tipHandle">
+        </common-empty>
+        <common-loading v-if="loading"></common-loading>
     </div>
 </template>
 

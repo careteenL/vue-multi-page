@@ -67,13 +67,39 @@ export default {
     },
     beforeMount () {
         document.body.style.backgroundColor = '#fff';
-        document.querySelector('#app').style.backgroundColor = '#fff';
+        document.querySelector('#app').style.backgroundColor = '#fff';        
+
+    },
+    mounted () {
+        // 回到顶部
+        setTimeout(function() {
+            // document.body.scrollTop = document.documentElement.scrollTop = 0;
+            // scrollTo(0,0);
+            var top = document.body.scrollTop || document.documentElement.scrollTop;
+            scrollBy(0, -top);
+            // document.querySelector('.score-help').scrollIntoView();
+        }, 0)
     },
     methods: {
         toggleMore (flag) {
             this.showSwiper = !this.showSwiper;
             flag ? $$util.lockScreen() : $$util.unLockScreen();
 
+        },
+        goBack () {
+            /**
+             *
+             * @desc 见myLoupanRank.js -> router.beforeEach() 处注释
+             */
+            var referrer = window.focus_referrer;
+            // if ($$util.isFocusApp() && 'https://jingjiren.focus.cn/backtoapp' === referrer) {
+            if ('https://jingjiren.focus.cn/backtoapp' === referrer) {
+                window.location.href = 'https://jingjiren.focus.cn/backtoapp';
+            }else {
+                this.$router.push({
+                    name: 'index'
+                })
+            }
         }
     }
 }

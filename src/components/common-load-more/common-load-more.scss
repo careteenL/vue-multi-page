@@ -1,0 +1,40 @@
+@import "../../assets/common-ui/util.scss";
+
+.loading-wrapper{
+    text-align: center;
+    position: relative;
+    // margin-bottom: -25px;
+    .pubilc-loading{
+        display: inline-block;
+        height: 60px;
+        line-height: 60px;
+        position: absolute;
+        left: 50%;
+        top: 0;
+        transform: translate(-50%, 0);
+        .icon{
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            margin-right: 10px;
+            transform-origin: 50% 50%;
+            @include bg('phone_pull_up.png');
+            vertical-align: middle;
+            &.loading{
+                @include bg('load-icon.png');
+                transform-origin: 50% 50%;
+                animation: ani-loading 0.9s linear infinite;
+            }
+            &.no-more{
+                @include bg('no-more-icon.png');
+            }
+
+        }
+        .text{
+            display: inline-block;
+            font-size: 14px;
+            color: #888;
+            vertical-align: middle;
+        }
+    }
+}

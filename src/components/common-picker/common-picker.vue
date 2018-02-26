@@ -3,7 +3,7 @@
           <div class="picker-wrapper">
                 <div class="picker-title flex">
                       <div class="cancel-btn cell" @click="close">取消</div>
-                      <div class="middle-btn" v-if="showMiddleBtn" @click="middleFn">
+                      <div class="middle-btn cell" v-if="showMiddleBtn" @click="middleFn">
                           {{middleTxt}}
                       </div>
                       <div class="confirm-btn cell" @click="getVal">确定</div>
@@ -27,7 +27,11 @@
                       </div>
                 </div>
           </div>
+          <div class="hack-mask" v-if="showHackMask">
+
+          </div>
     </div>
+
 </template>
 
 <script src="./common-picker.js">

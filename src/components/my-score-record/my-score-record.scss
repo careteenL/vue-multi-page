@@ -1,12 +1,43 @@
 @import "../../assets/common-ui/util.scss";
 
+.common-header-cur{
+    position: fixed!important;
+    top: 0;
+    left: 0;
+    z-index: 100;
+}
 .score-record{
+    position: relative;
+    margin-top: 44px;
+    .record-date_icon{
+        display: inline-block;
+        width: 22px;
+        height: 19px;
+        position: absolute;
+        top: -20px;
+        right: 15px;
+        z-index: 999;
+        // transform: translate(0, -50%);
+        @include bg('icon-date.png');
+        &.header-fixed{
+            position: fixed;
+            top: 20px;
+            right: 15px;
+        }
+    }
     .record-month{
         &-header{
-            background: #f8f8f8;
+            background: #f8f8fb;
             height: 37px;
             padding: 7px 15px;
             @include m-1px-sd(bottom, #eee);
+            &.header-fixed{
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                z-index: 20;
+            }
             &_time{
 
                 font-size: 14px;
@@ -30,17 +61,21 @@
                         color: #555566;
                         line-height: 24px;
                         margin-bottom: 3px;
+                        @extend %ellipsis;
                     }
                     &_time{
                         font-size: 12px;
                         color: #888899;
                         line-height: 18px;
+                        @extend %ellipsis;
                     }
                 }
                 &_num{
                     display: inline-block;
                     font-size: 16px;
                     color: #555566;
+                    @extend %ellipsis;
+                    max-width: 100px;
                     .num_bigger{
                         font-size: 20px;
                     }

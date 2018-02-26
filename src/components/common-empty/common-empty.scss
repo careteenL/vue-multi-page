@@ -1,0 +1,32 @@
+@import "../../assets/common-ui/util.scss";
+
+.global-empty{
+    text-align: center;
+    .global-empty_bg{
+        display: inline-block;
+        &.empty{
+            margin-top: 50px;
+            width: 210px;
+            height: 155px;
+            @include bg('empty-bg-new.png');
+        }
+        &.no-network{
+            margin-top: 92px;
+            width: 136px;
+            height: 96px;
+            @include bg('no-network.png');
+        }
+    }
+    .global-empty_tip{
+        margin: 30px 10px 10px;
+        color: #bbc;
+        font-size: 14px;
+    }
+    .global-empty_more{
+        font-size: 14px;
+        color: #d32 !important;
+        /*ios qq浏览器hack*/
+        text-decoration: underline;
+        appearance: none;
+    }
+}

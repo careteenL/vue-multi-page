@@ -9,6 +9,7 @@
     text-align: center;
     color: #555566;
     background: #fff;
+    font-weight: 700;
     @include m-1px-sd(bottom, #e0e0ea);
     &_back{
         position: absolute;
@@ -16,7 +17,7 @@
         left: 15px;
         transform: translate(0, -50%);
         display: inline-block;
-        width: 9px;
+        width: 18px;
         height: 18px;
         @include bg('icon-left.png');
     }

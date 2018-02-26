@@ -3,21 +3,54 @@ import config from 'config'
 
 let model = {};
 
-// 获取积分记录
-model.getMyScoreRecord = function (params, cb) {
-    params = {
-        cityId: 1,
-        search: 'w'
-    };
+/**
+ *
+ * @desc 获取积分余额
+ *       wiki：http://wiki.ops.focus.cn/pages/viewpage.action?pageId=9514124
+ */
+model.getMyScoreCur = function (cb) {
     ajax({
-        url: config.brokerDomain + '/nameAndGroupList',
+        url: config.brokerDomain + '/broker/score/cur',
         type: 'GET',
-        data: params,
+        withCredentials: true,
         success: function (res) {
-            console.log(res);
             cb && cb(res);
         }
     });
-}
+};
+
+/**
+ *
+ * @desc 获取经纪人历史积分详情
+ *       wiki：http://wiki.ops.focus.cn/pages/viewpage.action?pageId=9514203
+ */
+model.getMyScoreDetail = function (params, cb) {
+    ajax({
+        url: config.brokerDomain + '/broker/score/detail',
+        type: 'GET',
+        data: params,
+        withCredentials: true,
+        success: function (res) {
+            cb && cb(res);
+        }
+    });
+};
+
+/**
+ *
+ * @desc 分页 获取经纪人历史积分详情
+ *       wiki：http://wiki.ops.focus.cn/pages/viewpage.action?pageId=9514203
+ */
+model.loadMoreScore = function (params, cb) {
+    ajax({
+        url: config.brokerDomain + '/broker/score/detail',
+        type: 'GET',
+        data: params,
+        withCredentials: true,
+        success: function (res) {
+            cb && cb(res);
+        }
+    });
+};
 
 export default model;
