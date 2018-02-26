@@ -2,7 +2,7 @@
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 **Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
 
-- [vue多页面快速开发脚手架](#%E5%BC%80%E6%94%BE%E5%B9%B3%E5%8F%B0-%E7%A7%BB%E5%8A%A8%E7%AB%AF-%E7%8B%AC%E7%AB%8B%E6%96%B0%E9%A1%B5%E9%9D%A2)
+- [vue多页面快速开发脚手架](#vue%E5%A4%9A%E9%A1%B5%E9%9D%A2%E5%BF%AB%E9%80%9F%E5%BC%80%E5%8F%91%E8%84%9A%E6%89%8B%E6%9E%B6)
     - [1 兼容性要求](#1-%E5%85%BC%E5%AE%B9%E6%80%A7%E8%A6%81%E6%B1%82)
     - [2 技术依赖](#2-%E6%8A%80%E6%9C%AF%E4%BE%9D%E8%B5%96)
     - [3 开发、测试、线上环境](#3-%E5%BC%80%E5%8F%91%E6%B5%8B%E8%AF%95%E7%BA%BF%E4%B8%8A%E7%8E%AF%E5%A2%83)
@@ -20,6 +20,8 @@
 # {{vue多页面快速开发脚手架}}
 
 vue多页面快速开发脚手架
+
+从零搭建此脚手架 文档：https://careteenl.github.io/2018/02/26/vue-muti-pages/
 
 ## 1 兼容性要求
 
