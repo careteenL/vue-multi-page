@@ -1,3 +1,8 @@
+/**
+ *
+ * @desc 将以下待 修改处 的内容修改为 当前项目所需
+ */
+
 console.log('publishing...');
 var branch = process.argv[2]
 
@@ -20,7 +25,8 @@ console.log('\nbuilded ok\n');
 /**  build end**/
 
 /** copy to backend **/
-exec(`git clone -b ${branch} git@code.ops.focus.cn:system/wap-broker.git`);
+// [待修改：当前项目代码库]
+exec(`git clone -b ${branch} git@code.ops.focus.cn:system/xxx.git`);
 
 var staticFe = './dist/static';  // 静态资源
 var vmFe = './dist/vm/';  // 模板文件
@@ -31,12 +37,11 @@ var vmFe = './dist/vm/';  // 模板文件
  *       注：新增页面时需告知后端同学 页面name
  */
 var pageMap = {
-    'myScore.html': 'myScore.vm',
-    'myLoupanRank.html': 'myLoupanRank.vm'
+    'testPage.html': 'testPage.vm'
 };
 
-var staticBe = './wap-broker/res/wap-activity/static/';  // 后端静态资源存放目录
-var vmBe = './wap-broker/code/src/main/resources/view/wap-activity/';  // 后端模板目录
+var staticBe = './xxx/res/xxx/static/';  // 待修改：后端静态资源存放目录
+var vmBe = './xxx/code/src/main/resources/view/xxx/';  // 待修改：后端模板目录
 
 // 覆盖模板和资源文件
 rm('-rf', staticBe);
@@ -60,11 +65,12 @@ find(staticBe).filter(function(file) {
 /** copy to backend end**/
 
 /** push to backend **/
-exec(`cd wap-broker && git add *`);
-exec(`cd wap-broker && git pull origin ${branch}`);
-exec("cd wap-broker && git commit -m 'update: fe commit'");
-exec(`cd wap-broker && git push origin ${branch}`);
+// xxx 为后端代码库name
+exec(`cd xxx && git add *`);
+exec(`cd xxx && git pull origin ${branch}`);
+exec("cd xxx && git commit -m 'update: fe commit'");
+exec(`cd xxx && git push origin ${branch}`);
 
-rm('-rf', './wap-broker');
+rm('-rf', './xxx');
 /** push to backend end**/
 console.log('publish done...');

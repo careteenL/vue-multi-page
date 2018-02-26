@@ -176,22 +176,6 @@ var Tools = {
         return !Object.keys(obj).length
     },
 
-    // /**
-    //  *
-    //  * @desc 弹窗、蒙层...时禁止下层屏幕 滚动
-    //  */
-    // lockScreen: function() {
-    //     document.querySelector('body').setAttribute('style', 'position: fixed;');
-    // },
-    //
-    // /**
-    //  *
-    //  * @desc 弹窗、蒙层...时取消 禁止下层屏幕 滚动
-    //  */
-    // unLockScreen: function() {
-    //     document.querySelector('body').setAttribute('style', 'position: relative;');
-    // },
-
     /**
      *
      * @desc 初始化移动端 local/dev/test/online 调试工具 eruda

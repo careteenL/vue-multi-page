@@ -1,20 +1,13 @@
 module.exports = {
-    "url": "10.0.121.169",
+    "url": "127.0.0.1",
     "port": "2333",
     "proxyTable": {
-        "/nameAndGroupList": "http://m.jingjiren.focus-test.cn/nameAndGroupList",
-        "/broker/score": "http://broker.focus-test.cn/broker/score",
-        "/broker/activeness": "http://broker.focus-test.cn/broker/activeness",
-        "/broker/getBrokerInfo": "http://broker-app.focus-test.cn/broker/getBrokerInfo"
+        "/xxx": "http://xxx.xxx.cn/xxx"
     },
     "pageMap": {
-        "myScore": {
-            "aliasPage": "myScore",
-            "realPage": "myScore.html"
-        },
-        "myLoupanRank": {
-            "aliasPage": "myLoupanRank",
-            "realPage": "myLoupanRank.html"
+        "testPage": {
+            "aliasPage": "testPage",
+            "realPage": "testPage.html"
         }
     }
 }
