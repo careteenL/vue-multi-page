@@ -1,5 +1,7 @@
 import axios from 'axios'
 
+import qs from 'qs'
+
 /**
  *
  * @desc 封装axios，减少学习成本，参数基本跟jq ajax一致
@@ -21,12 +23,30 @@ let ajax = function (config) {
         console.error('请填写接口地址');
         return false;
     }
+    if (configs.type.toUpperCase() === 'POST') {
+        var postData = configs.data || {};
+        if (configs.headers && configs.headers['Content-Type'] &&
+            configs.headers['Content-Type'] == 'application/x-www-form-urlencoded') {
+                postData = qs.stringify(postData);
+        }
+        axios.defaults.data = postData;
+    } else if (configs.type.toUpperCase() === 'GET') {
+        axios.defaults.params = configs.data || {}
+    }
     axios({
         method: configs.type || 'get',
         url: configs.url,
-        params: configs.data || {},
-        header: configs.headers || {
-            'Content-Type':'application/x-www-form-urlencoded'
+        // params: configs.data || {},
+        // transformRequest: [function (data) {
+        //   // Do whatever you want to transform the data
+        //   let ret = ''
+        //   for (let it in data) {
+        //     ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
+        //   }
+        //   return ret
+        // }],
+        headers: configs.headers || {
+            'Content-Type':'application/json;charset=UTF-8'
         },
         // baseURL: '',
         withCredentials: configs.withCredentials || false,
